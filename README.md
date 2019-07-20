@@ -1,3 +1,4 @@
 # OpenSus
 A relatively basic set of Matlab scripts for kinematic analysis of suspension systems
-![](Images/OpenSusExample.eps)
+
+![](Images/OpenSusExample.png)
