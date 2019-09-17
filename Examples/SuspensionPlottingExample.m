@@ -5,29 +5,6 @@
 % https://uk.mathworks.com/matlabcentral/fileexchange/24484-geom3d>
 
 close all, clear, clc
-%% If you don't have the geom2d and geom3d toolboxes installed we will need to do them first
-
-if ~exist('isAxisHandle','file')
-    disp('Geom2d toolbox not found')
-    disp('Downloading Geom2d toolbox')
-    websave('geom2d.mltbx','https://uk.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/7844/versions/27/download/mltbx');
-    disp('Installing Geom2d toolbox')
-    matlab.addons.toolbox.installToolbox('geom2d.mltbx');
-    delete('geom2d.mltbx');
-    disp('Geom2d toolbox installed!')
-end
-
-if ~exist('createLine3d','file')
-    disp('Geom3d toolbox not found')
-    disp('Downloading Geom3d toolbox')
-    websave('geom3d.mltbx','https://uk.mathworks.com/matlabcentral/mlc-downloads/downloads/e564dff6-4a80-11e4-9553-005056977bd0/b0eccf7a-b5a7-4ba4-8d09-39644cf7fb38/packages/mltbx');
-    disp('Installing Geom3d toolbox')
-    matlab.addons.toolbox.installToolbox('geom3d.mltbx');
-    delete('geom3d.mltbx');
-    disp('Geom3d toolbox installed!')
-end
-
-addpath(genpath('../bin'));
 %% Define the points
 
 % Front right suspension
