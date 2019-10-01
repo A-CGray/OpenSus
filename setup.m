@@ -41,6 +41,6 @@ disp(' ')
 %%
 disp('Adding OpenSus to Matlab path for current session')
 disp(' ')
-addpath(genpath('bin'));
+addpath(genpath('src'));
 disp('To add OpenSus to Matlab path permanently, use the `Set Path` tool under')
 disp('the home tab and add the OpenSus bin folder and any subfolders')
