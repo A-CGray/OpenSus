@@ -11,7 +11,8 @@ classdef Member
     %   colour - The color of the Member when it is displayed in a plot
     %   OD - Outer Diameter of the member
     %   ID - Inner Diameter of the member
-    %   
+    %   material - The material the member is made of, defined by a Material object
+    %
     % Member Methods:
     %   method1 - Does a thing
     
