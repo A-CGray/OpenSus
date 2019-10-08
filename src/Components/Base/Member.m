@@ -54,25 +54,25 @@ classdef Member
             addRequired(parser, 'P2', @(x) validateattributes(x,{'Point'},{}))
             
             % Name is an optional input and must be a char
-            addOptional(parser, 'name', [P1.name,'-',P2.name], @(x) validateattributes(x,{'char'},{'scalartext'}))
+            addParameter(parser, 'name', [P1.name,'-',P2.name], @(x) validateattributes(x,{'char'},{'scalartext'}))
             
             % desc is an optional argument and must be a char
-            addOptional(parser, 'desc', '', @(x) validateattributes(x,{'char'},{}))
+            addParameter(parser, 'desc', '', @(x) validateattributes(x,{'char'},{}))
             
             % visible is an optional argument and must be a scalar logical
-            addOptional(parser, 'visible', true, @(x) validateattributes(x,{'logical'},{'scalar'}))
+            addParameter(parser, 'visible', true, @(x) validateattributes(x,{'logical'},{'scalar'}))
             
             % colour is an optional argument and must be a char
-            addOptional(parser, 'colour', 'g', @(x) validateattributes(x,{'char'},{}))
+            addParameter(parser, 'colour', 'g', @(x) validateattributes(x,{'char'},{}))
             
             % OD is an optional argument and must be a scalar double
-            addOptional(parser, 'OD', 18, @(x) validateattributes(x,{'double'},{'scalar'}))
+            addParameter(parser, 'OD', 18, @(x) validateattributes(x,{'double'},{'scalar'}))
             
             % ID is an optional argument and must be a scalar double
-            addOptional(parser, 'ID', 10, @(x) validateattributes(x,{'double'},{'scalar'}))
+            addParameter(parser, 'ID', 10, @(x) validateattributes(x,{'double'},{'scalar'}))
             
             % ID is an optional argument and must be a scalar double
-            addOptional(parser, 'material', Material(), @(x) validateattributes(x,{'Material'}))
+            addParameter(parser, 'material', Material(), @(x) validateattributes(x,{'Material'}))
             
             % Parse the input arguments
             parse(parser, P1, P2, varargin{:});
