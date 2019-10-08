@@ -20,21 +20,23 @@ classdef Point
     properties
         name
         desc
-        coord
         visible
         colour
         size
     end
-    properties (Dependent)
+    properties(Access=private)
+        privateCoord
+    end
+    properties(Dependent)
+        coord
         x
         y
         z
     end
     
     methods
-        function P = Point(name, coord, varargin)
-            %POINT Construct an instance of this class
-            
+        function P = Point(coord, name, varargin)
+            %POINT Construct an instance of this class            
             
             %% Input parsing
             % We use the input parser to check the given inputs are in the
@@ -43,12 +45,12 @@ classdef Point
             % to missing inputs
             parser = inputParser;
             
-            % Name is a required input and must be a char
-            addRequired(parser, 'name', @(x) validateattributes(x,{'char'},{'scalartext'}))
-            
             % coord is a required input and must be a 3x1 double
             addRequired(parser, 'coord', @(x) validateattributes(x,{'double'},{'size',[1,3]}))
             
+            % Name is a required input and must be a char
+            addRequired(parser, 'name', @(x) validateattributes(x,{'char'},{'scalartext'}))
+                        
             % desc is an optional argument and must be a char
             addOptional(parser, 'desc', '', @(x) validateattributes(x,{'char'},{}))
             
@@ -67,7 +69,7 @@ classdef Point
             %% Property assignment
             inps = parser.Results;
             P.name = inps.name;
-            P.coord = inps.coord;
+            P.privateCoord = inps.coord;
             P.desc = inps.desc;
             P.visible = inps.visible;
             P.size = inps.size;
@@ -89,17 +91,38 @@ classdef Point
             vec = P1.coord - P2.coord;
         end
         
-        %% Get methods for dependent properties x, y and z
+        %% Get methods for dependent properties x, y, z and coord
         function X = get.x(P)
-            X = P.coord(1);
+            X = P.privateCoord(1);
         end
         
         function Y = get.y(P)
-            Y = P.coord(2);
+            Y = P.privateCoord(2);
         end
         
         function Z = get.z(P)
-            Z = P.coord(3);
+            Z = P.privateCoord(3);
+        end
+        
+        function coord = get.coord(P)
+            coord = P.privateCoord;
+        end
+        
+        %% Set methods for dependent properties x, y, z and coord
+        function P = set.x(P, newX)
+            P.privateCoord(1) = newX;
+        end
+        
+        function P = set.y(P, newY)
+            P.privateCoord(2) = newY;
+        end
+        
+        function P = set.z(P, newZ)
+            P.privateCoord(3) = newZ;
+        end
+        
+        function P = set.coord(P, newCoord)
+            P.privateCoord = newCoord;
         end
     end
 end
